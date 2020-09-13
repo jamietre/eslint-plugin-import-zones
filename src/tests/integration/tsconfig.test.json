@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "lib": ["es5", "dom"],
+    "types": [],
+    "baseUrl": "./",
+    "paths": {}
+  },
+  "include": ["rules"]
+}

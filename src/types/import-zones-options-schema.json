@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "baseUrl": {
+      "type": "string",
+      "description": "Base URL for the project. If using @typescript-eslint/parser, this will\nbe obtained from tsconfig.json."
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Aliases that will be used to map import paths. If using"
+    },
+    "importPaths": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "allowed": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "allowed"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "allowed": {
+                "type": "boolean"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "allowed"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "description": "For a given import path, validate the path of the module consuming it\nagainst a set of rules"
+    },
+    "zonePaths": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "allowed": {
+                  "type": "boolean"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "allowed"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "description": "For a given module path pattern, validate the path of imports contianed in\nmodules found in locations matching the pattern against a set of rule."
+    }
+  },
+  "additionalProperties": false
+}
